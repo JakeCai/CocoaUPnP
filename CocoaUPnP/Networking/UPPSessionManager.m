@@ -19,4 +19,8 @@
     return self;
 }
 
+- (void)dealloc{
+    [self.session finishTasksAndInvalidate];
+}
+
 @end

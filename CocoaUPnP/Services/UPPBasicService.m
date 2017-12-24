@@ -119,4 +119,8 @@
             NSStringFromClass([self class]), self, self.serviceType, self.controlURL];
 }
 
+- (void)dealloc{
+    [self.sessionManager.session finishTasksAndInvalidate];
+}
+
 @end

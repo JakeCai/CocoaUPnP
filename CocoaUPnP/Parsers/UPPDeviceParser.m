@@ -26,9 +26,11 @@
         UPPDeviceParser *parser = [[UPPDeviceParser alloc] initWithXMLData:data];
         [parser parseWithBaseURL:url completion:^(NSArray *devices, NSError *error) {
             completion(devices, error);
+            [manager.session finishTasksAndInvalidate];
         }];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, error);
+        [manager.session finishTasksAndInvalidate];
     }];
 }
 
